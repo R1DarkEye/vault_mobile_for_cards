@@ -1,7 +1,13 @@
 export const colors = {
   background: '#F5F7FF',
   surface: '#FFFFFF',
+  surfaceAlt: '#F2F4FF',
   primary: '#4D6BFF',
+  primarySoft: '#E6EBFF',
+  accentPurple: '#7B61FF',
+  accentBlue: '#5B8CFF',
+  accentGreen: '#4BC2A6',
+  accentOrange: '#F6A24F',
   text: '#0F172A',
   textMuted: '#6B7280',
   border: '#E5E7EB',

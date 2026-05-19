@@ -1,6 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { enableScreens } from 'react-native-screens';
+import { StyleSheet } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import CardsScreen from '../screens/CardsScreen';
 import SecurityScreen from '../screens/SecurityScreen';
@@ -37,9 +39,12 @@ export default function AppNavigator() {
           tabBarActiveTintColor: colors.primary,
           tabBarInactiveTintColor: colors.textMuted,
           tabBarStyle: {
-            borderTopColor: colors.border,
+            borderTopColor: 'transparent',
             backgroundColor: colors.surface,
-            height: 64,
+            height: 78,
+            paddingBottom: 10,
+            paddingTop: 10,
+            borderTopWidth: 0,
           },
           tabBarLabelStyle: {
             fontSize: 12,
@@ -47,11 +52,39 @@ export default function AppNavigator() {
           },
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Cards" component={CardsScreen} />
-        <Tab.Screen name="Security" component={SecurityScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name="Cards"
+          component={CardsScreen}
+          options={{
+            tabBarIcon: ({ color }) => <MaterialIcons name="credit-card" size={24} color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name="Security"
+          component={SecurityScreen}
+          options={{
+            tabBarIcon: ({ color }) => <MaterialIcons name="verified-user" size={24} color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarIcon: ({ color }) => <MaterialIcons name="person" size={24} color={color} />,
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  empty: {},
+});

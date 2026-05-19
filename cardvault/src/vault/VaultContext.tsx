@@ -11,7 +11,7 @@ import {
   decryptText,
 } from './crypto';
 import { readVaultData, readVaultMeta, writeVaultData, writeVaultMeta } from './storage';
-import { CardType, VaultCard, VaultData } from './types';
+import { CardType, VaultCard, VaultData, CardDetails } from './types';
 import { generateMnemonic } from '@scure/bip39';
 import { wordlist } from '@scure/bip39/wordlists/english';
 
@@ -29,7 +29,8 @@ type VaultContextValue = {
   finalizeVault: () => Promise<boolean>;
   unlockVault: () => Promise<boolean>;
   lockVault: () => void;
-  addCard: (title: string, subtitle: string, type: CardType, last4?: string) => Promise<void>;
+  addCard: (title: string, subtitle: string, type: CardType, last4?: string, details?: CardDetails) => Promise<void>;
+  deleteCard: (id: string) => Promise<void>;
   viewMnemonic: () => Promise<string | null>;
 };
 
@@ -188,7 +189,7 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const addCard = useCallback(
-    async (title: string, subtitle: string, type: CardType, last4?: string) => {
+    async (title: string, subtitle: string, type: CardType, last4?: string, details?: CardDetails) => {
       if (!keyBytes) {
         return;
       }
@@ -199,9 +200,24 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
         type,
         last4,
         updatedAt: new Date().toISOString(),
+        details,
       };
       const updated: VaultData = {
         cards: [...(data?.cards ?? []), next],
+      };
+      setData(updated);
+      await writeVaultData(keyBytes, updated);
+    },
+    [data, keyBytes]
+  );
+
+  const deleteCard = useCallback(
+    async (id: string) => {
+      if (!keyBytes) {
+        return;
+      }
+      const updated: VaultData = {
+        cards: (data?.cards ?? []).filter((card) => card.id !== id),
       };
       setData(updated);
       await writeVaultData(keyBytes, updated);
@@ -229,6 +245,7 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       unlockVault,
       lockVault,
       addCard,
+      deleteCard,
       viewMnemonic,
     }),
     [
@@ -243,6 +260,7 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       unlockVault,
       lockVault,
       addCard,
+      deleteCard,
       viewMnemonic,
     ]
   );
