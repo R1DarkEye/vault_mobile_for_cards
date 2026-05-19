@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@noble/ciphers": "^0.5.0",
-    "@noble/hashes": "^1.4.0",
-    "@scure/base": "^1.1.0",
-    "react-native-get-random-values": "^2.0.0"
-  }
-}
