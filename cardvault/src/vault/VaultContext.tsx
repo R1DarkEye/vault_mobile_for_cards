@@ -11,9 +11,11 @@ import {
   decryptText,
 } from './crypto';
 import { readVaultData, readVaultMeta, writeVaultData, writeVaultMeta } from './storage';
-import { CardType, VaultCard, VaultData, CardDetails } from './types';
+import { CardType, VaultCard, VaultData, CardDetails, ProfileData } from './types';
 import { generateMnemonic } from '@scure/bip39';
 import { wordlist } from '@scure/bip39/wordlists/english';
+
+import { Toast } from '../components/Toast';
 
 const VERIFY_TEXT = 'cardvault-verify';
 const MNEMONIC_KEY = 'cardvault.mnemonic';
@@ -31,7 +33,9 @@ type VaultContextValue = {
   lockVault: () => void;
   addCard: (title: string, subtitle: string, type: CardType, last4?: string, details?: CardDetails) => Promise<void>;
   deleteCard: (id: string) => Promise<void>;
+  updateProfile: (profile: ProfileData) => Promise<void>;
   viewMnemonic: () => Promise<string | null>;
+  showToast: (title: string, message: string, type?: 'success' | 'error' | 'info') => void;
 };
 
 const VaultContext = createContext<VaultContextValue | null>(null);
@@ -71,6 +75,11 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<VaultData | null>(null);
   const [keyBytes, setKeyBytes] = useState<Uint8Array | null>(null);
   const [lastError, setLastError] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ title: string; message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
+  const showToast = useCallback((title: string, message: string, type: 'success' | 'error' | 'info' = 'success') => {
+    setToast({ title, message, type });
+  }, []);
 
   const withTimeout = async <T,>(label: string, task: Promise<T>, ms: number) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -154,9 +163,23 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       return false;
     }
 
-    const mnemonic = await SecureStore.getItemAsync(MNEMONIC_KEY, {
-      requireAuthentication: true,
+    const authResult = await LocalAuthentication.authenticateAsync({
+      promptMessage: 'Unlock CardVault',
+      disableDeviceFallback: false,
     });
+
+    if (!authResult.success) {
+      setLastError('Biometric authentication failed.');
+      return false;
+    }
+
+    let mnemonic: string | null = null;
+    try {
+      mnemonic = await SecureStore.getItemAsync(MNEMONIC_KEY);
+    } catch (error) {
+      setLastError('Unable to unlock vault.');
+      return false;
+    }
 
     if (!mnemonic) {
       setLastError('Unable to unlock vault.');
@@ -204,6 +227,7 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       };
       const updated: VaultData = {
         cards: [...(data?.cards ?? []), next],
+        profile: data?.profile,
       };
       setData(updated);
       await writeVaultData(keyBytes, updated);
@@ -218,6 +242,22 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       }
       const updated: VaultData = {
         cards: (data?.cards ?? []).filter((card) => card.id !== id),
+        profile: data?.profile,
+      };
+      setData(updated);
+      await writeVaultData(keyBytes, updated);
+    },
+    [data, keyBytes]
+  );
+
+  const updateProfile = useCallback(
+    async (profile: ProfileData) => {
+      if (!keyBytes) {
+        return;
+      }
+      const updated: VaultData = {
+        cards: data?.cards ?? [],
+        profile,
       };
       setData(updated);
       await writeVaultData(keyBytes, updated);
@@ -226,10 +266,21 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
   );
 
   const viewMnemonic = useCallback(async () => {
-    const mnemonic = await SecureStore.getItemAsync(MNEMONIC_KEY, {
-      requireAuthentication: true,
+    const authResult = await LocalAuthentication.authenticateAsync({
+      promptMessage: 'View Recovery Phrase',
+      disableDeviceFallback: false,
     });
-    return mnemonic;
+
+    if (!authResult.success) {
+      return null;
+    }
+
+    try {
+      const mnemonic = await SecureStore.getItemAsync(MNEMONIC_KEY);
+      return mnemonic;
+    } catch {
+      return null;
+    }
   }, []);
 
   const value = useMemo(
@@ -246,7 +297,9 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       lockVault,
       addCard,
       deleteCard,
+      updateProfile,
       viewMnemonic,
+      showToast,
     }),
     [
       isInitialized,
@@ -261,11 +314,25 @@ export function VaultProvider({ children }: { children: React.ReactNode }) {
       lockVault,
       addCard,
       deleteCard,
+      updateProfile,
       viewMnemonic,
+      showToast,
     ]
   );
 
-  return <VaultContext.Provider value={value}>{children}</VaultContext.Provider>;
+  return (
+    <VaultContext.Provider value={value}>
+      {children}
+      {toast && (
+        <Toast
+          title={toast.title}
+          message={toast.message}
+          type={toast.type}
+          onDismiss={() => setToast(null)}
+        />
+      )}
+    </VaultContext.Provider>
+  );
 }
 
 export function useVault() {

@@ -24,6 +24,14 @@ export type VaultCard = {
   details?: CardDetails;
 };
 
+export type ProfileData = {
+  name: string;
+  email: string;
+  phone: string;
+  photoUri?: string;
+};
+
 export type VaultData = {
   cards: VaultCard[];
+  profile?: ProfileData;
 };

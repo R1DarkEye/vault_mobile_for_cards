@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { PrimaryButton } from '../components/PrimaryButton';
@@ -8,7 +8,7 @@ import { useVault } from '../vault/VaultContext';
 import { useMemo } from 'react';
 
 export default function SecurityScreen() {
-  const { lockVault, viewMnemonic, data, isUnlocked } = useVault();
+  const { lockVault, viewMnemonic, data, isUnlocked, showToast } = useVault();
 
   const cardCount = data?.cards?.length ?? 0;
 
@@ -40,7 +40,7 @@ export default function SecurityScreen() {
   const handleViewMnemonic = async () => {
     const mnemonic = await viewMnemonic();
     if (!mnemonic) {
-      Alert.alert('Unable to load recovery words');
+      showToast('Error', 'Unable to load recovery words', 'error');
       return;
     }
     Alert.alert('Recovery Words', mnemonic, [{ text: 'OK' }]);
@@ -56,13 +56,13 @@ export default function SecurityScreen() {
   const handleAction = (title: string) => {
     switch (title) {
       case 'Change Master Password':
-        Alert.alert('Change Password', 'Your vault uses a mnemonic-based key derivation. To change your credentials, you\'ll need to create a new vault and re-add your cards.');
+        showToast('Change Password', 'Your vault uses a mnemonic-based key. To change credentials, you\'ll need to re-create the vault.', 'info');
         break;
       case 'Recovery Options':
         handleViewMnemonic();
         break;
       case 'Manage Trusted Devices':
-        Alert.alert('Trusted Devices', 'This device is the only authorized device. Multi-device support will be available in a future update.');
+        showToast('Trusted Devices', 'This device is the only authorized device. Multi-device support coming soon.', 'info');
         break;
       case 'Lock Vault Now':
         handleLockVault();
@@ -80,97 +80,112 @@ export default function SecurityScreen() {
   ] as const;
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.title}>Security</Text>
-            <Text style={styles.subtitle}>Your security is our top priority.</Text>
-            <Text style={styles.subtitle}>Manage and monitor your vault security.</Text>
-          </View>
-          <View style={styles.heroArt}>
-            <MaterialIcons name="security" size={42} color={colors.primary} />
-          </View>
-        </View>
-
-        <LinearGradient colors={['#F3F6FF', '#F7F0FF']} style={styles.scoreCard}>
-          <View style={styles.scoreRing}>
-            <View style={styles.scoreRingInner}>
-              <MaterialIcons name="check" size={20} color="#2E9D6B" />
+    <SafeAreaView style={styles.container} edges={['top']}>
+      <LinearGradient
+        colors={colors.gradientStops}
+        start={{ x: 0.1, y: 0 }}
+        end={{ x: 0.9, y: 1 }}
+        style={styles.gradient}
+      >
+        <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+          <View style={styles.header}>
+            <View style={styles.headerTextContainer}>
+              <Text style={styles.title}>Security</Text>
+              <Text style={styles.subtitle}>Your security is our top priority.</Text>
+              <Text style={styles.subtitle}>Manage and monitor your vault security.</Text>
+            </View>
+            <View style={styles.heroArt}>
+              <MaterialIcons name="security" size={42} color={colors.primary} />
             </View>
           </View>
-          <View style={styles.scoreCopy}>
-            <Text style={styles.scoreLabel}>Vault Security Score</Text>
-            <Text style={styles.scoreValue}>{scoreLabel}</Text>
-            <Text style={styles.scoreSubtitle}>Your vault is protected with strong security measures.</Text>
-          </View>
-          <View style={styles.scoreBadge}>
-            <Text style={styles.scoreBadgeText}>{securityScore} / 100</Text>
-          </View>
-        </LinearGradient>
 
-        <Text style={styles.sectionTitle}>Security Status</Text>
-        <View style={styles.statusGrid}>
-          {statusCards.map((item) => (
-            <Pressable
-              key={item.title}
-              style={styles.statusCard}
-              onPress={() => {
-                if (item.title.includes('Vault')) {
-                  if (isUnlocked) handleLockVault();
-                }
-              }}
-            >
-              <View style={styles.statusIcon}>
-                <MaterialIcons name={item.icon as any} size={18} color={colors.primary} />
+          <LinearGradient colors={['rgba(255,255,255,0.7)', 'rgba(255,255,255,0.4)']} style={styles.scoreCard}>
+            <View style={styles.scoreRing}>
+              <View style={styles.scoreRingInner}>
+                <MaterialIcons name="check" size={20} color="#2E9D6B" />
               </View>
-              <Text style={styles.statusTitle}>{item.title}</Text>
-              <Text style={styles.statusSubtitle}>{item.subtitle}</Text>
-            </Pressable>
-          ))}
-        </View>
+            </View>
+            <View style={styles.scoreCopy}>
+              <Text style={styles.scoreLabel}>Vault Security Score</Text>
+              <Text style={styles.scoreValue}>{scoreLabel}</Text>
+              <Text style={styles.scoreSubtitle}>Your vault is protected with strong security measures.</Text>
+            </View>
+            <View style={styles.scoreBadge}>
+              <Text style={styles.scoreBadgeText}>{securityScore} / 100</Text>
+            </View>
+          </LinearGradient>
 
-        <View style={styles.actionPanel}>
-          <View style={styles.actionRow}>
-            <Text style={styles.actionTitle}>Two-Factor Authentication</Text>
-            <View style={styles.actionBadge}>
-              <Text style={styles.actionBadgeText}>Enabled</Text>
+          <Text style={styles.sectionTitle}>Security Status</Text>
+          <View style={styles.statusGrid}>
+            {statusCards.map((item) => (
+              <Pressable
+                key={item.title}
+                style={styles.statusCard}
+                onPress={() => {
+                  if (item.title.includes('Vault')) {
+                    if (isUnlocked) handleLockVault();
+                  }
+                }}
+              >
+                <View style={styles.statusIcon}>
+                  <MaterialIcons name={item.icon as any} size={18} color={colors.primary} />
+                </View>
+                <Text style={styles.statusTitle}>{item.title}</Text>
+                <Text style={styles.statusSubtitle}>{item.subtitle}</Text>
+              </Pressable>
+            ))}
+          </View>
+
+          <View style={styles.actionPanel}>
+            <View style={styles.actionRow}>
+              <Text style={styles.actionTitle}>Two-Factor Authentication</Text>
+              <View style={styles.actionBadge}>
+                <Text style={styles.actionBadgeText}>Enabled</Text>
+              </View>
             </View>
           </View>
-        </View>
 
-        <Text style={styles.sectionTitle}>Security Actions</Text>
-        <View style={styles.actionList}>
-          {actions.map((item) => (
-            <Pressable
-              key={item.title}
-              style={({ pressed }) => [styles.actionItem, pressed && styles.actionItemPressed]}
-              onPress={() => handleAction(item.title)}
-            >
-              <View style={styles.actionIcon}>
-                <MaterialIcons name={item.icon as any} size={18} color={colors.primary} />
-              </View>
-              <View style={styles.actionCopy}>
-                <Text style={styles.actionItemTitle}>{item.title}</Text>
-                <Text style={styles.actionItemSubtitle}>{item.subtitle}</Text>
-              </View>
-              <MaterialIcons name="chevron-right" size={18} color={colors.textMuted} />
-            </Pressable>
-          ))}
-          <PrimaryButton title="View recovery words" onPress={handleViewMnemonic} style={styles.primaryCta} />
-          <PrimaryButton title="Lock vault now" onPress={handleLockVault} variant="ghost" />
-        </View>
+          <Text style={styles.sectionTitle}>Security Actions</Text>
+          <View style={styles.actionList}>
+            {actions.map((item, index) => (
+              <Pressable
+                key={item.title}
+                style={({ pressed }) => [
+                  styles.actionItem,
+                  pressed && styles.actionItemPressed,
+                  index < actions.length - 1 && styles.actionItemBorder,
+                ]}
+                onPress={() => handleAction(item.title)}
+              >
+                <View style={styles.actionIconContainer}>
+                  <MaterialIcons name={item.icon as any} size={18} color={colors.primary} />
+                </View>
+                <View style={styles.actionCopy}>
+                  <Text style={styles.actionItemTitle}>{item.title}</Text>
+                  <Text style={styles.actionItemSubtitle}>{item.subtitle}</Text>
+                </View>
+                <MaterialIcons name="chevron-right" size={18} color={colors.textMuted} />
+              </Pressable>
+            ))}
+          </View>
 
-        <View style={styles.systemBanner}>
-          <View style={styles.systemIcon}>
-            <MaterialIcons name="check-circle" size={18} color="#1E7E53" />
+          <View style={styles.ctaContainer}>
+            <PrimaryButton title="View recovery words" onPress={handleViewMnemonic} style={styles.primaryCta} />
+            <View style={{ height: 10 }} />
+            <PrimaryButton title="Lock vault now" onPress={handleLockVault} variant="ghost" />
           </View>
-          <View>
-            <Text style={styles.systemTitle}>All systems secure</Text>
-            <Text style={styles.systemSubtitle}>Encryption active · Biometrics enabled</Text>
+
+          <View style={styles.systemBanner}>
+            <View style={styles.systemIcon}>
+              <MaterialIcons name="check-circle" size={18} color="#1E7E53" />
+            </View>
+            <View>
+              <Text style={styles.systemTitle}>All systems secure</Text>
+              <Text style={styles.systemSubtitle}>Encryption active · Biometrics enabled</Text>
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </LinearGradient>
     </SafeAreaView>
   );
 }
@@ -180,57 +195,79 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
+  gradient: {
+    flex: 1,
+  },
   content: {
     padding: 20,
-    paddingBottom: 120,
+    paddingBottom: 130,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     gap: 12,
     marginBottom: 16,
   },
+  headerTextContainer: {
+    flex: 1,
+  },
   title: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: '800',
     color: colors.text,
+    fontFamily: 'DMSans',
     marginBottom: 6,
   },
   subtitle: {
     fontSize: 13,
     color: colors.textMuted,
+    lineHeight: 18,
   },
   heroArt: {
-    width: 120,
-    height: 120,
-    borderRadius: 24,
-    backgroundColor: '#E6ECFF',
+    width: 80,
+    height: 80,
+    borderRadius: 20,
+    backgroundColor: colors.primarySoft,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: colors.borderSoft,
   },
   scoreCard: {
-    borderRadius: 20,
+    borderRadius: 24,
     padding: 16,
     marginTop: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.6)',
+    borderColor: colors.borderSoft,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#5B5B94',
+        shadowOpacity: 0.06,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   scoreRing: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    borderWidth: 6,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    borderWidth: 5,
     borderColor: '#45C28E',
     alignItems: 'center',
     justifyContent: 'center',
   },
   scoreRingInner: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     backgroundColor: '#DFF8EE',
     alignItems: 'center',
     justifyContent: 'center',
@@ -246,6 +283,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     color: '#2E9D6B',
+    fontFamily: 'DMSans',
     marginTop: 4,
   },
   scoreSubtitle: {
@@ -255,7 +293,7 @@ const styles = StyleSheet.create({
   },
   scoreBadge: {
     backgroundColor: '#DFF8EE',
-    borderRadius: 14,
+    borderRadius: 12,
     paddingHorizontal: 10,
     paddingVertical: 6,
   },
@@ -265,11 +303,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   sectionTitle: {
-    marginTop: 20,
+    marginTop: 24,
     marginBottom: 12,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700',
     color: colors.text,
+    fontFamily: 'DMSans',
   },
   statusGrid: {
     flexDirection: 'row',
@@ -277,12 +316,23 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   statusCard: {
-    width: '47%',
-    backgroundColor: colors.surface,
-    borderRadius: 18,
-    padding: 12,
+    width: '48%',
+    backgroundColor: colors.surfaceGlass,
+    borderRadius: 20,
+    padding: 14,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.borderSoft,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#5B5B94',
+        shadowOpacity: 0.05,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 3 },
+      },
+      android: {
+        elevation: 1.5,
+      },
+    }),
   },
   statusIcon: {
     width: 34,
@@ -294,7 +344,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   statusTitle: {
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '600',
     color: colors.text,
   },
@@ -302,13 +352,15 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: colors.textMuted,
     marginTop: 4,
+    lineHeight: 14,
   },
   actionPanel: {
-    backgroundColor: colors.surface,
-    borderRadius: 18,
+    backgroundColor: colors.surfaceGlass,
+    borderRadius: 20,
     padding: 14,
+    marginTop: 16,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.borderSoft,
   },
   actionRow: {
     flexDirection: 'row',
@@ -322,7 +374,7 @@ const styles = StyleSheet.create({
   },
   actionBadge: {
     backgroundColor: colors.primarySoft,
-    borderRadius: 12,
+    borderRadius: 10,
     paddingHorizontal: 8,
     paddingVertical: 4,
   },
@@ -332,22 +384,39 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   actionList: {
-    backgroundColor: colors.surface,
-    borderRadius: 20,
-    padding: 16,
+    backgroundColor: colors.surfaceGlass,
+    borderRadius: 24,
+    padding: 6,
     borderWidth: 1,
-    borderColor: colors.border,
-    gap: 14,
+    borderColor: colors.borderSoft,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#5B5B94',
+        shadowOpacity: 0.06,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 4 },
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   actionItem: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
+    padding: 12,
+    borderRadius: 18,
+  },
+  actionItemBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(229, 231, 235, 0.4)',
+    borderRadius: 0,
   },
   actionItemPressed: {
     opacity: 0.7,
   },
-  actionIcon: {
+  actionIconContainer: {
     width: 36,
     height: 36,
     borderRadius: 12,
@@ -368,17 +437,22 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
     marginTop: 2,
   },
+  ctaContainer: {
+    marginTop: 24,
+  },
   primaryCta: {
     backgroundColor: colors.primary,
   },
   systemBanner: {
-    marginTop: 16,
+    marginTop: 24,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
     backgroundColor: '#E9F7F0',
-    borderRadius: 18,
+    borderRadius: 20,
     padding: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.15)',
   },
   systemIcon: {
     width: 34,

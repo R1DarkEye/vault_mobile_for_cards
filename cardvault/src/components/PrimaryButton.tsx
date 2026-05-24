@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, ViewStyle } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '../theme/colors';
 
 type Props = {
@@ -24,38 +25,53 @@ export function PrimaryButton({
       disabled={disabled}
       style={({ pressed }) => [
         styles.base,
-        isGhost ? styles.ghost : styles.primary,
+        isGhost ? styles.ghost : null,
         pressed && !disabled ? styles.pressed : null,
         disabled ? styles.disabled : null,
         style,
       ]}
     >
-      <Text style={[styles.text, isGhost ? styles.textGhost : styles.textPrimary]}>
-        {title}
-      </Text>
+      {isGhost ? (
+        <Text style={[styles.text, styles.textGhost]}>{title}</Text>
+      ) : (
+        <LinearGradient
+          colors={colors.primaryGradient as unknown as readonly [string, string, ...string[]]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.gradient}
+        >
+          <Text style={[styles.text, styles.textPrimary]}>{title}</Text>
+        </LinearGradient>
+      )}
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: 14,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  gradient: {
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  primary: {
-    backgroundColor: colors.primary,
+    borderRadius: 16,
   },
   ghost: {
-    backgroundColor: colors.surface,
+    backgroundColor: 'rgba(255,255,255,0.85)',
     borderWidth: 1,
     borderColor: colors.border,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     fontSize: 15,
     fontWeight: '600',
+    fontFamily: 'DMSans',
   },
   textPrimary: {
     color: '#FFFFFF',
@@ -65,6 +81,7 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.85,
+    transform: [{ scale: 0.98 }],
   },
   disabled: {
     opacity: 0.55,

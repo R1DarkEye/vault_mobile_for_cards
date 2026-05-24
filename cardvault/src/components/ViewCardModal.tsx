@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   Platform,
@@ -7,13 +7,13 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Clipboard from 'expo-clipboard';
 import { colors } from '../theme/colors';
 import { VaultCard } from '../vault/types';
+import { Toast } from './Toast';
 
 type Props = {
   visible: boolean;
@@ -22,6 +22,8 @@ type Props = {
 };
 
 export default function ViewCardModal({ visible, card, onClose }: Props) {
+  const [toast, setToast] = useState<{ title: string; message: string; type: 'success' | 'error' | 'info' } | null>(null);
+
   if (!card) return null;
 
   const { title, subtitle, type, last4, details } = card;
@@ -29,7 +31,16 @@ export default function ViewCardModal({ visible, card, onClose }: Props) {
   const handleCopy = async (text: string | undefined, label: string) => {
     if (!text) return;
     await Clipboard.setStringAsync(text);
-    Alert.alert('Copied', `${label} copied to clipboard.`);
+    setToast({
+      title: 'Copied to Clipboard',
+      message: `${label} has been securely copied to your clipboard.`,
+      type: 'success',
+    });
+  };
+
+  const handleClose = () => {
+    setToast(null);
+    onClose();
   };
 
   const getGradientColors = () => {
@@ -73,14 +84,14 @@ export default function ViewCardModal({ visible, card, onClose }: Props) {
   };
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
+    <Modal visible={visible} animationType="slide" transparent onRequestClose={handleClose}>
       <View style={styles.overlay}>
         <View style={styles.sheet}>
           <View style={styles.handle} />
 
           <View style={styles.sheetHeader}>
             <Text style={styles.sheetTitle}>Card Details</Text>
-            <Pressable onPress={onClose} style={styles.closeButton}>
+            <Pressable onPress={handleClose} style={styles.closeButton}>
               <MaterialIcons name="close" size={20} color={colors.textMuted} />
             </Pressable>
           </View>
@@ -179,6 +190,14 @@ export default function ViewCardModal({ visible, card, onClose }: Props) {
           </ScrollView>
         </View>
       </View>
+      {toast && (
+        <Toast
+          title={toast.title}
+          message={toast.message}
+          type={toast.type}
+          onDismiss={() => setToast(null)}
+        />
+      )}
     </Modal>
   );
 }

@@ -1,0 +1,602 @@
+{
+  "E:\\projects\\cards_vault_mobile\\.vscode\\settings.json": {
+    "mtime": 1779204578.3343287,
+    "ast_hash": "0bdccf3f74ca242511bb4114b3b44bfd",
+    "semantic_hash": "0bdccf3f74ca242511bb4114b3b44bfd"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\app.json": {
+    "mtime": 1779288515.2774923,
+    "ast_hash": "6dc7c3fa29c03da276ed98eeeff4d1e1",
+    "semantic_hash": "6dc7c3fa29c03da276ed98eeeff4d1e1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\App.tsx": {
+    "mtime": 1779173455.1171398,
+    "ast_hash": "aea51c41999b847d5ec74055bcbfa2be",
+    "semantic_hash": "aea51c41999b847d5ec74055bcbfa2be"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\eas.json": {
+    "mtime": 1779210663.2128022,
+    "ast_hash": "cd43dd5b364dc8830135f4601db894ed",
+    "semantic_hash": "cd43dd5b364dc8830135f4601db894ed"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\index.ts": {
+    "mtime": 1779169452.8121312,
+    "ast_hash": "33caa6d28d87fc7e637c033d0d7124b1",
+    "semantic_hash": "33caa6d28d87fc7e637c033d0d7124b1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\package.json": {
+    "mtime": 1779288511.068767,
+    "ast_hash": "692bca409f49cf501283c9d0408bab4a",
+    "semantic_hash": "692bca409f49cf501283c9d0408bab4a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\tsconfig.json": {
+    "mtime": 1779169452.8035517,
+    "ast_hash": "a5df9ddad82c56de332cbb7d00dd294b",
+    "semantic_hash": "a5df9ddad82c56de332cbb7d00dd294b"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.claude\\settings.json": {
+    "mtime": 1779169500.8178058,
+    "ast_hash": "dc580fca35a0e98ed20777ede5e545a1",
+    "semantic_hash": "dc580fca35a0e98ed20777ede5e545a1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\devices.json": {
+    "mtime": 1779170816.9339392,
+    "ast_hash": "e5f6eb13c875f326cfd5915d3364614f",
+    "semantic_hash": "e5f6eb13c875f326cfd5915d3364614f"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\build.gradle": {
+    "mtime": 1779203589.9252706,
+    "ast_hash": "55cec08c744fbe7b1f1294009fe3f65d",
+    "semantic_hash": "55cec08c744fbe7b1f1294009fe3f65d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\gradlew": {
+    "mtime": 1779203586.3123608,
+    "ast_hash": "0f2f3ef1a19bcef677e682d5457fc215",
+    "semantic_hash": "0f2f3ef1a19bcef677e682d5457fc215"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\settings.gradle": {
+    "mtime": 1779203589.9252706,
+    "ast_hash": "7658a41840c4cf33e5aac4ae71c8f560",
+    "semantic_hash": "7658a41840c4cf33e5aac4ae71c8f560"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\build.gradle": {
+    "mtime": 1779203994.9775982,
+    "ast_hash": "0ba999ec633f292bd63351b68cabc63a",
+    "semantic_hash": "0ba999ec633f292bd63351b68cabc63a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\java\\com\\anony12\\cardvault\\MainActivity.kt": {
+    "mtime": 1779203586.8084934,
+    "ast_hash": "2461fe5723609b41979b08a7f6623cc1",
+    "semantic_hash": "2461fe5723609b41979b08a7f6623cc1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\java\\com\\anony12\\cardvault\\MainApplication.kt": {
+    "mtime": 1779203586.8084934,
+    "ast_hash": "a9ce1c93b6caeaa7589973455ec5efad",
+    "semantic_hash": "a9ce1c93b6caeaa7589973455ec5efad"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\AddCardModal.tsx": {
+    "mtime": 1779333078.7792795,
+    "ast_hash": "2e3a19f7d614ba16384383c3bffbbff1",
+    "semantic_hash": "2e3a19f7d614ba16384383c3bffbbff1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\CardSlider.tsx": {
+    "mtime": 1779602010.130799,
+    "ast_hash": "dc9c5de4b4ae5b23dc291d8d299f1a20",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\EditProfileModal.tsx": {
+    "mtime": 1779333612.786465,
+    "ast_hash": "cc312b6fbfa1da8ee93c620ab29b5be5",
+    "semantic_hash": "cc312b6fbfa1da8ee93c620ab29b5be5"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\PrimaryButton.tsx": {
+    "mtime": 1779602014.2390027,
+    "ast_hash": "d8c697db49f0bd96c963011bfe4dfb71",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\Toast.tsx": {
+    "mtime": 1779288286.1528807,
+    "ast_hash": "e32b14208799e4898504294a07c714a8",
+    "semantic_hash": "e32b14208799e4898504294a07c714a8"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\ViewCardModal.tsx": {
+    "mtime": 1779288380.8700793,
+    "ast_hash": "90ad50b31cbeb1fa35be4ddd739dfcbe",
+    "semantic_hash": "90ad50b31cbeb1fa35be4ddd739dfcbe"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\navigation\\AppNavigator.tsx": {
+    "mtime": 1779601949.0718813,
+    "ast_hash": "b655a0884ec17870752844d5cf86fa2b",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\CardsScreen.tsx": {
+    "mtime": 1779601862.041356,
+    "ast_hash": "3e633cbb0a1635657d27d69f6ca61d38",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\HomeScreen.tsx": {
+    "mtime": 1779603151.0405407,
+    "ast_hash": "b45838c4d7fe575c725f7379ad8a8462",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\OnboardingScreen.tsx": {
+    "mtime": 1779601659.4988904,
+    "ast_hash": "949b9c24b6e9d1c4fb47e92f530b3188",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\ProfileScreen.tsx": {
+    "mtime": 1779603151.039542,
+    "ast_hash": "dd7cc247d083ff4737594aa3396e2394",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\ProfileSetupScreen.tsx": {
+    "mtime": 1779601963.1544895,
+    "ast_hash": "c856efe4885f8c2529097e696e2dea36",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\SecurityScreen.tsx": {
+    "mtime": 1779603151.039542,
+    "ast_hash": "d5358c07458d922bd2c964e7d545ac87",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\UnlockScreen.tsx": {
+    "mtime": 1779603619.3880336,
+    "ast_hash": "7ee49654d3e4663ea07e2e9651a515ce",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\theme\\colors.ts": {
+    "mtime": 1779604079.674722,
+    "ast_hash": "7eb347e77acdacaebb97dbd6de6d686e",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\vault\\crypto.ts": {
+    "mtime": 1779177646.05558,
+    "ast_hash": "4507ac0d3c1bbb247698941ac041dced",
+    "semantic_hash": "4507ac0d3c1bbb247698941ac041dced"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\vault\\storage.ts": {
+    "mtime": 1779173054.8379927,
+    "ast_hash": "5573cd316a2c644c714f8a9c6428be4d",
+    "semantic_hash": "5573cd316a2c644c714f8a9c6428be4d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\vault\\types.ts": {
+    "mtime": 1779335227.6608489,
+    "ast_hash": "c037a09477d8772757c10a9500235b37",
+    "semantic_hash": "c037a09477d8772757c10a9500235b37"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\src\\vault\\VaultContext.tsx": {
+    "mtime": 1779335266.744545,
+    "ast_hash": "196e7c36c8d82419db4c1ca740c34fb4",
+    "semantic_hash": "196e7c36c8d82419db4c1ca740c34fb4"
+  },
+  "E:\\projects\\cards_vault_mobile\\.agents\\rules\\graphify.md": {
+    "mtime": 1779597308.6941698,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  "E:\\projects\\cards_vault_mobile\\.agents\\workflows\\graphify.md": {
+    "mtime": 1779597308.6941698,
+    "ast_hash": "84de69efd46ab0b8430393bd4188f8f2",
+    "semantic_hash": "84de69efd46ab0b8430393bd4188f8f2"
+  },
+  "E:\\projects\\cards_vault_mobile\\.github\\copilot-instructions.md": {
+    "mtime": 1779170690.7543397,
+    "ast_hash": "c87d16763447a019b11c89c498846f82",
+    "semantic_hash": "c87d16763447a019b11c89c498846f82"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\AGENTS.md": {
+    "mtime": 1779169500.8167975,
+    "ast_hash": "6542cb480ddb271ad8d4f2528ec015b2",
+    "semantic_hash": "6542cb480ddb271ad8d4f2528ec015b2"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\CLAUDE.md": {
+    "mtime": 1779598155.6707296,
+    "ast_hash": "6780d021d064df37d86bef16484129ac",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\codebase.md": {
+    "mtime": 1779602066.1773095,
+    "ast_hash": "3e8b58d3a969dca32d378050485f147a",
+    "semantic_hash": ""
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\README.md": {
+    "mtime": 1779169811.8450496,
+    "ast_hash": "6c43806682d9a2eb67e47de1ea3c41da",
+    "semantic_hash": "6c43806682d9a2eb67e47de1ea3c41da"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.agents\\rules\\graphify.md": {
+    "mtime": 1779597194.1253712,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.agents\\workflows\\graphify.md": {
+    "mtime": 1779597194.1253712,
+    "ast_hash": "84de69efd46ab0b8430393bd4188f8f2",
+    "semantic_hash": "84de69efd46ab0b8430393bd4188f8f2"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\README.md": {
+    "mtime": 1779170816.921845,
+    "ast_hash": "2d3a37a405a8f9ffb72ff12bdd3b0adf",
+    "semantic_hash": "2d3a37a405a8f9ffb72ff12bdd3b0adf"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-background\\android-adaptive-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_108.png": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "5fc5ff595a9708fb1186f29d4cba0165",
+    "semantic_hash": "5fc5ff595a9708fb1186f29d4cba0165"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-background\\android-adaptive-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_162.png": {
+    "mtime": 1779203588.3333077,
+    "ast_hash": "8b804c2e3ffcb414d81159cdbe8e1338",
+    "semantic_hash": "8b804c2e3ffcb414d81159cdbe8e1338"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-background\\android-adaptive-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_216.png": {
+    "mtime": 1779203588.284495,
+    "ast_hash": "1e8461bcda400d6f2e6ba0a789e9df32",
+    "semantic_hash": "1e8461bcda400d6f2e6ba0a789e9df32"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-background\\android-adaptive-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_324.png": {
+    "mtime": 1779203588.338314,
+    "ast_hash": "3a76914a81170ce0bafc194cf299e0b8",
+    "semantic_hash": "3a76914a81170ce0bafc194cf299e0b8"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-background\\android-adaptive-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_432.png": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "11c5ebf85672a8b1a823b29ffcc023a6",
+    "semantic_hash": "11c5ebf85672a8b1a823b29ffcc023a6"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-foreground\\android-adaptive-foreground-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_108.png": {
+    "mtime": 1779203588.0893326,
+    "ast_hash": "21c6ff184e62fe81d5d99486c994b4a1",
+    "semantic_hash": "21c6ff184e62fe81d5d99486c994b4a1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-foreground\\android-adaptive-foreground-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_162.png": {
+    "mtime": 1779203588.0893326,
+    "ast_hash": "23d6c4c853d373ebc8a6b78e01a565f5",
+    "semantic_hash": "23d6c4c853d373ebc8a6b78e01a565f5"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-foreground\\android-adaptive-foreground-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_216.png": {
+    "mtime": 1779203588.1363652,
+    "ast_hash": "94e64d4a7a895c46bee57dd117eaaa4e",
+    "semantic_hash": "94e64d4a7a895c46bee57dd117eaaa4e"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-foreground\\android-adaptive-foreground-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_324.png": {
+    "mtime": 1779203588.1413636,
+    "ast_hash": "54904135a542a76951f4c4aa7618d942",
+    "semantic_hash": "54904135a542a76951f4c4aa7618d942"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-foreground\\android-adaptive-foreground-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_432.png": {
+    "mtime": 1779203588.2289853,
+    "ast_hash": "56f4339ea33cd98feee64cf1b83ecd24",
+    "semantic_hash": "56f4339ea33cd98feee64cf1b83ecd24"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-monochrome\\android-adaptive-monochrome-6371fc2c12e33ad2215a86c281db3d682a81bebe7c957a842c13b8bf00cceb83-cover-transparent\\icon_108.png": {
+    "mtime": 1779203587.9303007,
+    "ast_hash": "3d7d2cdcf1efff070cd99b3a24b2af0a",
+    "semantic_hash": "3d7d2cdcf1efff070cd99b3a24b2af0a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-monochrome\\android-adaptive-monochrome-6371fc2c12e33ad2215a86c281db3d682a81bebe7c957a842c13b8bf00cceb83-cover-transparent\\icon_162.png": {
+    "mtime": 1779203587.9303007,
+    "ast_hash": "ddc9ce93ec17a515f270e1334f4d096d",
+    "semantic_hash": "ddc9ce93ec17a515f270e1334f4d096d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-monochrome\\android-adaptive-monochrome-6371fc2c12e33ad2215a86c281db3d682a81bebe7c957a842c13b8bf00cceb83-cover-transparent\\icon_216.png": {
+    "mtime": 1779203587.9343863,
+    "ast_hash": "25ce7486d6cf2a88b12191bdc327889c",
+    "semantic_hash": "25ce7486d6cf2a88b12191bdc327889c"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-monochrome\\android-adaptive-monochrome-6371fc2c12e33ad2215a86c281db3d682a81bebe7c957a842c13b8bf00cceb83-cover-transparent\\icon_324.png": {
+    "mtime": 1779203587.9303007,
+    "ast_hash": "c74b95ed269648784a5341dc7fc8c5d2",
+    "semantic_hash": "c74b95ed269648784a5341dc7fc8c5d2"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-adaptive-monochrome\\android-adaptive-monochrome-6371fc2c12e33ad2215a86c281db3d682a81bebe7c957a842c13b8bf00cceb83-cover-transparent\\icon_432.png": {
+    "mtime": 1779203587.9794075,
+    "ast_hash": "d294024561d781537913c8be15eed1e1",
+    "semantic_hash": "d294024561d781537913c8be15eed1e1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-circle\\android-standard-circle-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_144.png": {
+    "mtime": 1779203587.5326066,
+    "ast_hash": "9b29b961e6443b77708e44d3d85d43d9",
+    "semantic_hash": "9b29b961e6443b77708e44d3d85d43d9"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-circle\\android-standard-circle-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_192.png": {
+    "mtime": 1779203587.5152037,
+    "ast_hash": "35bbd93ceef0113460e3c77a9eeef3ab",
+    "semantic_hash": "35bbd93ceef0113460e3c77a9eeef3ab"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-circle\\android-standard-circle-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_48.png": {
+    "mtime": 1779203587.5152037,
+    "ast_hash": "6cdc9c527c1ca4468a2e83ea4e858d49",
+    "semantic_hash": "6cdc9c527c1ca4468a2e83ea4e858d49"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-circle\\android-standard-circle-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_72.png": {
+    "mtime": 1779203587.5152037,
+    "ast_hash": "1e9c993b1eaf7fc2722b4325f7e53322",
+    "semantic_hash": "1e9c993b1eaf7fc2722b4325f7e53322"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-circle\\android-standard-circle-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_96.png": {
+    "mtime": 1779203587.5152037,
+    "ast_hash": "c684a0174e7f8d881ecf57da9900d9e3",
+    "semantic_hash": "c684a0174e7f8d881ecf57da9900d9e3"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-round-background\\android-standard-round-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_144.png": {
+    "mtime": 1779203587.6598177,
+    "ast_hash": "cc3d74f3987b209fb966594c665f4c58",
+    "semantic_hash": "cc3d74f3987b209fb966594c665f4c58"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-round-background\\android-standard-round-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_192.png": {
+    "mtime": 1779203587.7344646,
+    "ast_hash": "8ff5b977a987c4ab230220d4b2114427",
+    "semantic_hash": "8ff5b977a987c4ab230220d4b2114427"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-round-background\\android-standard-round-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_48.png": {
+    "mtime": 1779203587.7324655,
+    "ast_hash": "ec5e8783548aba50b8645bde250d270b",
+    "semantic_hash": "ec5e8783548aba50b8645bde250d270b"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-round-background\\android-standard-round-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_72.png": {
+    "mtime": 1779203587.6598177,
+    "ast_hash": "b2faebed11c6d0e170a28077317c1292",
+    "semantic_hash": "b2faebed11c6d0e170a28077317c1292"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-round-background\\android-standard-round-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_96.png": {
+    "mtime": 1779203587.6598177,
+    "ast_hash": "252c690ae5659b9dd98d07ce43cf8c7f",
+    "semantic_hash": "252c690ae5659b9dd98d07ce43cf8c7f"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square\\android-standard-square-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_144.png": {
+    "mtime": 1779203587.1617076,
+    "ast_hash": "b06ad71770f0cf53de086b71d015cfe3",
+    "semantic_hash": "b06ad71770f0cf53de086b71d015cfe3"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square\\android-standard-square-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_192.png": {
+    "mtime": 1779203587.0826676,
+    "ast_hash": "b48c73b46f1a5ab1eef6e26be83b796d",
+    "semantic_hash": "b48c73b46f1a5ab1eef6e26be83b796d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square\\android-standard-square-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_48.png": {
+    "mtime": 1779203587.0826676,
+    "ast_hash": "c11dee1217f5bba141c32f0fa6986856",
+    "semantic_hash": "c11dee1217f5bba141c32f0fa6986856"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square\\android-standard-square-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_72.png": {
+    "mtime": 1779203587.0826676,
+    "ast_hash": "de2007b2a3e925a555bed55b643a8ede",
+    "semantic_hash": "de2007b2a3e925a555bed55b643a8ede"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square\\android-standard-square-9e3d0315a33c6799de601dd34cd8bf8cc3a8d16f3bf75592baec2ceb7240b391-cover-transparent\\icon_96.png": {
+    "mtime": 1779203587.0826676,
+    "ast_hash": "08d1612e4323dc31142f56556c9ec1f1",
+    "semantic_hash": "08d1612e4323dc31142f56556c9ec1f1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square-background\\android-standard-square-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_144.png": {
+    "mtime": 1779203587.3192196,
+    "ast_hash": "21c4973fb22e2e1097ab695fccd7ca4b",
+    "semantic_hash": "21c4973fb22e2e1097ab695fccd7ca4b"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square-background\\android-standard-square-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_192.png": {
+    "mtime": 1779203587.2099257,
+    "ast_hash": "c2a5513dc7f8f8db8f76da0233d55f2a",
+    "semantic_hash": "c2a5513dc7f8f8db8f76da0233d55f2a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square-background\\android-standard-square-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_48.png": {
+    "mtime": 1779203587.219913,
+    "ast_hash": "63528407d6afe44715bda957252291a7",
+    "semantic_hash": "63528407d6afe44715bda957252291a7"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square-background\\android-standard-square-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_72.png": {
+    "mtime": 1779203587.2916305,
+    "ast_hash": "400f99b335a57dd4c9a287e4eaac2066",
+    "semantic_hash": "400f99b335a57dd4c9a287e4eaac2066"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\android-standard-square-background\\android-standard-square-background-fb139c2dee362ebf2070e23b96da6fc0d43f8492de38b8af1fd7223e19b5861d-cover-transparent\\icon_96.png": {
+    "mtime": 1779203587.219913,
+    "ast_hash": "04ec3465b92877c8abf3650a2185d3a5",
+    "semantic_hash": "04ec3465b92877c8abf3650a2185d3a5"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\splash-android\\splash-android-5f4c0a732b6325bf4071d9124d2ae67e037cb24fcc9c482ef82bea742109a3b8-contain\\icon_200.png": {
+    "mtime": 1779203589.263898,
+    "ast_hash": "7a90e4c3547cfb581c63c2458cb8fa8d",
+    "semantic_hash": "7a90e4c3547cfb581c63c2458cb8fa8d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\splash-android\\splash-android-5f4c0a732b6325bf4071d9124d2ae67e037cb24fcc9c482ef82bea742109a3b8-contain\\icon_300.png": {
+    "mtime": 1779203589.263898,
+    "ast_hash": "51b05b4c991238545701aa2c4ac62c9d",
+    "semantic_hash": "51b05b4c991238545701aa2c4ac62c9d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\splash-android\\splash-android-5f4c0a732b6325bf4071d9124d2ae67e037cb24fcc9c482ef82bea742109a3b8-contain\\icon_400.png": {
+    "mtime": 1779203589.264903,
+    "ast_hash": "ee02afb2c708332642ece55e7dd24cc0",
+    "semantic_hash": "ee02afb2c708332642ece55e7dd24cc0"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\splash-android\\splash-android-5f4c0a732b6325bf4071d9124d2ae67e037cb24fcc9c482ef82bea742109a3b8-contain\\icon_600.png": {
+    "mtime": 1779203589.4819045,
+    "ast_hash": "b2b7e663bcd08fb21465543b4f64126b",
+    "semantic_hash": "b2b7e663bcd08fb21465543b4f64126b"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\.expo\\web\\cache\\production\\images\\splash-android\\splash-android-5f4c0a732b6325bf4071d9124d2ae67e037cb24fcc9c482ef82bea742109a3b8-contain\\icon_800.png": {
+    "mtime": 1779203589.263898,
+    "ast_hash": "8054fcb3b0460edb614411df7c36828f",
+    "semantic_hash": "8054fcb3b0460edb614411df7c36828f"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\drawable-hdpi\\splashscreen_logo.png": {
+    "mtime": 1779203589.8140757,
+    "ast_hash": "ade4f271d920c553479f8359126fe71c",
+    "semantic_hash": "ade4f271d920c553479f8359126fe71c"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\drawable-mdpi\\splashscreen_logo.png": {
+    "mtime": 1779203589.8140757,
+    "ast_hash": "456a586f33d48e02adee03680b872073",
+    "semantic_hash": "456a586f33d48e02adee03680b872073"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\drawable-xhdpi\\splashscreen_logo.png": {
+    "mtime": 1779203589.8937154,
+    "ast_hash": "b151f30998a8eb180038294d96108ad3",
+    "semantic_hash": "b151f30998a8eb180038294d96108ad3"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\drawable-xxhdpi\\splashscreen_logo.png": {
+    "mtime": 1779203589.8937154,
+    "ast_hash": "456fa27f2c9de9a9bf0d8951a9609ea4",
+    "semantic_hash": "456fa27f2c9de9a9bf0d8951a9609ea4"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\drawable-xxxhdpi\\splashscreen_logo.png": {
+    "mtime": 1779203589.8937154,
+    "ast_hash": "8724a45c38b0f973ac9713ff270a40cb",
+    "semantic_hash": "8724a45c38b0f973ac9713ff270a40cb"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp": {
+    "mtime": 1779203587.352907,
+    "ast_hash": "d9557a734c5c169c2e01bc1f42f7834e",
+    "semantic_hash": "d9557a734c5c169c2e01bc1f42f7834e"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_background.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "8b804c2e3ffcb414d81159cdbe8e1338",
+    "semantic_hash": "8b804c2e3ffcb414d81159cdbe8e1338"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "23d6c4c853d373ebc8a6b78e01a565f5",
+    "semantic_hash": "23d6c4c853d373ebc8a6b78e01a565f5"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_monochrome.webp": {
+    "mtime": 1779203587.9343863,
+    "ast_hash": "ddc9ce93ec17a515f270e1334f4d096d",
+    "semantic_hash": "ddc9ce93ec17a515f270e1334f4d096d"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp": {
+    "mtime": 1779203587.77041,
+    "ast_hash": "fb8997db915ef67fc60495acb2ed48ef",
+    "semantic_hash": "fb8997db915ef67fc60495acb2ed48ef"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp": {
+    "mtime": 1779203587.352907,
+    "ast_hash": "1694a6545ed4584a326aa1d2d3b90961",
+    "semantic_hash": "1694a6545ed4584a326aa1d2d3b90961"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_background.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "5fc5ff595a9708fb1186f29d4cba0165",
+    "semantic_hash": "5fc5ff595a9708fb1186f29d4cba0165"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "21c6ff184e62fe81d5d99486c994b4a1",
+    "semantic_hash": "21c6ff184e62fe81d5d99486c994b4a1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_monochrome.webp": {
+    "mtime": 1779203587.9343863,
+    "ast_hash": "3d7d2cdcf1efff070cd99b3a24b2af0a",
+    "semantic_hash": "3d7d2cdcf1efff070cd99b3a24b2af0a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp": {
+    "mtime": 1779203587.7788174,
+    "ast_hash": "5c91987781991357bb8f2868cb07b236",
+    "semantic_hash": "5c91987781991357bb8f2868cb07b236"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp": {
+    "mtime": 1779203587.352907,
+    "ast_hash": "fb5003abe60731fea2d2e752fff4da44",
+    "semantic_hash": "fb5003abe60731fea2d2e752fff4da44"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_background.webp": {
+    "mtime": 1779203588.338314,
+    "ast_hash": "1e8461bcda400d6f2e6ba0a789e9df32",
+    "semantic_hash": "1e8461bcda400d6f2e6ba0a789e9df32"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "94e64d4a7a895c46bee57dd117eaaa4e",
+    "semantic_hash": "94e64d4a7a895c46bee57dd117eaaa4e"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_monochrome.webp": {
+    "mtime": 1779203587.9343863,
+    "ast_hash": "25ce7486d6cf2a88b12191bdc327889c",
+    "semantic_hash": "25ce7486d6cf2a88b12191bdc327889c"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp": {
+    "mtime": 1779203587.77041,
+    "ast_hash": "5d29ac3e12ef4cc14dadf5cd5d61c3a3",
+    "semantic_hash": "5d29ac3e12ef4cc14dadf5cd5d61c3a3"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp": {
+    "mtime": 1779203587.3787324,
+    "ast_hash": "cbce3fd1fb1a81519848a4cf8bd2726f",
+    "semantic_hash": "cbce3fd1fb1a81519848a4cf8bd2726f"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_background.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "3a76914a81170ce0bafc194cf299e0b8",
+    "semantic_hash": "3a76914a81170ce0bafc194cf299e0b8"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "54904135a542a76951f4c4aa7618d942",
+    "semantic_hash": "54904135a542a76951f4c4aa7618d942"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_monochrome.webp": {
+    "mtime": 1779203587.9343863,
+    "ast_hash": "c74b95ed269648784a5341dc7fc8c5d2",
+    "semantic_hash": "c74b95ed269648784a5341dc7fc8c5d2"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.webp": {
+    "mtime": 1779203587.7768123,
+    "ast_hash": "62016d7aa88047baf806f5d928eeeeed",
+    "semantic_hash": "62016d7aa88047baf806f5d928eeeeed"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp": {
+    "mtime": 1779203587.3368373,
+    "ast_hash": "5b4e8f5db7933a7e52d2410fa8550406",
+    "semantic_hash": "5b4e8f5db7933a7e52d2410fa8550406"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_background.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "11c5ebf85672a8b1a823b29ffcc023a6",
+    "semantic_hash": "11c5ebf85672a8b1a823b29ffcc023a6"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.webp": {
+    "mtime": 1779203588.393757,
+    "ast_hash": "56f4339ea33cd98feee64cf1b83ecd24",
+    "semantic_hash": "56f4339ea33cd98feee64cf1b83ecd24"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_monochrome.webp": {
+    "mtime": 1779203587.9804108,
+    "ast_hash": "d294024561d781537913c8be15eed1e1",
+    "semantic_hash": "d294024561d781537913c8be15eed1e1"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp": {
+    "mtime": 1779203587.7928488,
+    "ast_hash": "6710be3a8af4f969bca49f1e8cca435c",
+    "semantic_hash": "6710be3a8af4f969bca49f1e8cca435c"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\assets\\android-icon-background.png": {
+    "mtime": 1779169452.8035517,
+    "ast_hash": "2d65569cc0e2afdcea0af9f9902d4173",
+    "semantic_hash": "2d65569cc0e2afdcea0af9f9902d4173"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\assets\\android-icon-foreground.png": {
+    "mtime": 1779169452.8059304,
+    "ast_hash": "72e71a9c846c6aa4ae32476641a00e18",
+    "semantic_hash": "72e71a9c846c6aa4ae32476641a00e18"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\assets\\android-icon-monochrome.png": {
+    "mtime": 1779169452.8071265,
+    "ast_hash": "1e097dab989759fc0b69440092ca22cd",
+    "semantic_hash": "1e097dab989759fc0b69440092ca22cd"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\assets\\favicon.png": {
+    "mtime": 1779169452.8071265,
+    "ast_hash": "d9f444efbdfbe7931aa93beada07318a",
+    "semantic_hash": "d9f444efbdfbe7931aa93beada07318a"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\assets\\icon.png": {
+    "mtime": 1779169452.810131,
+    "ast_hash": "cb975bba2216ce10a60e6c0ffe9941a2",
+    "semantic_hash": "cb975bba2216ce10a60e6c0ffe9941a2"
+  },
+  "E:\\projects\\cards_vault_mobile\\cardvault\\assets\\splash-icon.png": {
+    "mtime": 1779169452.8111312,
+    "ast_hash": "97dae5a0e62ad8551d8a31897b425e63",
+    "semantic_hash": "97dae5a0e62ad8551d8a31897b425e63"
+  }
+}

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Modal,
   Platform,
@@ -10,12 +9,14 @@ import {
   Text,
   TextInput,
   View,
+  Keyboard,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 import { useVault } from '../vault/VaultContext';
 import { CardType, CardDetails } from '../vault/types';
 import { PrimaryButton } from './PrimaryButton';
+import { Toast } from './Toast';
 
 type Props = {
   visible: boolean;
@@ -31,11 +32,13 @@ const cardTypes: { type: CardType; label: string; icon: string }[] = [
 ];
 
 export default function AddCardModal({ visible, onClose }: Props) {
-  const { addCard } = useVault();
+  const { addCard, showToast } = useVault();
   
   // Generic fields
   const [selectedType, setSelectedType] = useState<CardType>('payment');
   const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState<{ title: string; message: string; type: 'success' | 'error' | 'info' } | null>(null);
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
   
   // Input states
   const [title, setTitle] = useState(''); // E.g., HDFC Credit Card, Passport, etc.
@@ -75,6 +78,8 @@ export default function AddCardModal({ visible, onClose }: Props) {
     setGroupNumber('');
     setNotes('');
     setDescription('');
+    setErrors({});
+    setToast(null);
   };
 
   const formatCardNumber = (text: string) => {
@@ -106,21 +111,53 @@ export default function AddCardModal({ visible, onClose }: Props) {
   };
 
   const handleSave = async () => {
+    const newErrors: Record<string, boolean> = {};
+
     if (!title.trim()) {
-      Alert.alert('Missing field', 'Please enter a title for this card.');
+      newErrors.title = true;
+    }
+
+    switch (selectedType) {
+      case 'payment':
+        if (!cardNumber.trim()) {
+          newErrors.cardNumber = true;
+        }
+        break;
+      case 'id':
+      case 'license':
+        if (!idNumber.trim()) {
+          newErrors.idNumber = true;
+        }
+        break;
+      case 'insurance':
+        if (!policyNumber.trim()) {
+          newErrors.policyNumber = true;
+        }
+        break;
+      case 'other':
+        if (!description.trim()) {
+          newErrors.description = true;
+        }
+        break;
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setToast({
+        title: 'Missing Required Fields',
+        message: 'Please complete all highlighted fields to secure this card.',
+        type: 'error',
+      });
       return;
     }
 
+    setErrors({});
     let subtitle = '';
     let last4: string | undefined = undefined;
     const details: CardDetails = {};
 
     switch (selectedType) {
       case 'payment':
-        if (!cardNumber.trim()) {
-          Alert.alert('Missing field', 'Please enter the card number.');
-          return;
-        }
         subtitle = cardholderName.trim() || 'Payment Card';
         const cleanedCardNumber = cardNumber.replace(/\D/g, '');
         if (cleanedCardNumber.length >= 4) {
@@ -134,10 +171,6 @@ export default function AddCardModal({ visible, onClose }: Props) {
 
       case 'id':
       case 'license':
-        if (!idNumber.trim()) {
-          Alert.alert('Missing field', `Please enter the ${selectedType === 'id' ? 'ID' : 'License'} number.`);
-          return;
-        }
         subtitle = cardholderName.trim() || (selectedType === 'id' ? 'ID Card' : 'License');
         details.cardholderName = cardholderName;
         details.idNumber = idNumber;
@@ -149,10 +182,6 @@ export default function AddCardModal({ visible, onClose }: Props) {
         break;
 
       case 'insurance':
-        if (!policyNumber.trim()) {
-          Alert.alert('Missing field', 'Please enter the policy number.');
-          return;
-        }
         subtitle = provider.trim() || 'Insurance';
         details.provider = provider;
         details.policyNumber = policyNumber;
@@ -160,10 +189,6 @@ export default function AddCardModal({ visible, onClose }: Props) {
         break;
 
       case 'other':
-        if (!description.trim()) {
-          Alert.alert('Missing field', 'Please enter a description.');
-          return;
-        }
         subtitle = description.trim();
         details.notes = notes;
         break;
@@ -172,11 +197,19 @@ export default function AddCardModal({ visible, onClose }: Props) {
     setSaving(true);
     try {
       await addCard(title.trim(), subtitle, selectedType, last4, details);
-      Alert.alert('Card Added', `"${title.trim()}" has been securely stored in your vault.`);
+      const savedTitle = title.trim();
       resetForm();
       onClose();
+      // Show success toast on main screen AFTER closing modal
+      setTimeout(() => {
+        showToast('Card Added', `"${savedTitle}" has been securely stored in your vault.`, 'success');
+      }, 100);
     } catch {
-      Alert.alert('Error', 'Unable to save card. Please try again.');
+      setToast({
+        title: 'Save Failed',
+        message: 'Unable to secure and save your card. Please try again.',
+        type: 'error',
+      });
     } finally {
       setSaving(false);
     }
@@ -188,22 +221,33 @@ export default function AddCardModal({ visible, onClose }: Props) {
   };
 
   return (
-    <Modal visible={visible} animationType="slide" transparent>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.overlay}
-      >
-        <View style={styles.sheet}>
-          <View style={styles.handle} />
+    <Modal
+      visible={visible}
+      animationType="slide"
+      transparent
+      onRequestClose={handleClose}
+    >
+      <Pressable style={styles.overlay} onPress={() => {
+        Keyboard.dismiss();
+        handleClose();
+      }}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'padding'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 10}
+          style={styles.sheetContainer}
+        >
+          <Pressable style={styles.sheet} onPress={() => Keyboard.dismiss()}>
+            <View style={styles.handle} />
 
-          <View style={styles.sheetHeader}>
-            <Text style={styles.sheetTitle}>Add New Item</Text>
-            <Pressable onPress={handleClose} style={styles.closeButton}>
-              <MaterialIcons name="close" size={20} color={colors.textMuted} />
-            </Pressable>
-          </View>
+            <View style={styles.sheetHeader}>
+              <Text style={styles.sheetTitle}>Add New Item</Text>
+              <Pressable onPress={handleClose} style={styles.closeButton}>
+                <MaterialIcons name="close" size={20} color={colors.textMuted} />
+              </Pressable>
+            </View>
 
-          <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollBody}>
+
+          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollBody}>
             {/* Card Type Selector */}
             <Text style={styles.label}>Type</Text>
             <View style={styles.typeRow}>
@@ -236,9 +280,12 @@ export default function AddCardModal({ visible, onClose }: Props) {
             {/* Common Title */}
             <Text style={styles.label}>Title</Text>
             <TextInput
-              style={styles.input}
+              style={[styles.input, errors.title && styles.inputError]}
               value={title}
-              onChangeText={setTitle}
+              onChangeText={(t) => {
+                setTitle(t);
+                if (errors.title) setErrors((prev) => ({ ...prev, title: false }));
+              }}
               placeholder={
                 selectedType === 'payment' ? 'e.g., HDFC Credit Card' :
                 selectedType === 'id' ? 'e.g., US Passport' :
@@ -265,9 +312,12 @@ export default function AddCardModal({ visible, onClose }: Props) {
 
                 <Text style={styles.label}>Card Number</Text>
                 <TextInput
-                  style={styles.input}
+                  style={[styles.input, errors.cardNumber && styles.inputError]}
                   value={cardNumber}
-                  onChangeText={(t) => setCardNumber(formatCardNumber(t))}
+                  onChangeText={(t) => {
+                    setCardNumber(formatCardNumber(t));
+                    if (errors.cardNumber) setErrors((prev) => ({ ...prev, cardNumber: false }));
+                  }}
                   placeholder="0000 0000 0000 0000"
                   placeholderTextColor={colors.textMuted}
                   keyboardType="number-pad"
@@ -317,9 +367,12 @@ export default function AddCardModal({ visible, onClose }: Props) {
 
                 <Text style={styles.label}>{selectedType === 'id' ? 'ID Number' : 'License Number'}</Text>
                 <TextInput
-                  style={styles.input}
+                  style={[styles.input, errors.idNumber && styles.inputError]}
                   value={idNumber}
-                  onChangeText={setIdNumber}
+                  onChangeText={(t) => {
+                    setIdNumber(t);
+                    if (errors.idNumber) setErrors((prev) => ({ ...prev, idNumber: false }));
+                  }}
                   placeholder="ABC123456"
                   placeholderTextColor={colors.textMuted}
                   autoCapitalize="characters"
@@ -383,9 +436,12 @@ export default function AddCardModal({ visible, onClose }: Props) {
 
                 <Text style={styles.label}>Policy Number</Text>
                 <TextInput
-                  style={styles.input}
+                  style={[styles.input, errors.policyNumber && styles.inputError]}
                   value={policyNumber}
-                  onChangeText={setPolicyNumber}
+                  onChangeText={(t) => {
+                    setPolicyNumber(t);
+                    if (errors.policyNumber) setErrors((prev) => ({ ...prev, policyNumber: false }));
+                  }}
                   placeholder="POL-123456789"
                   placeholderTextColor={colors.textMuted}
                   autoCapitalize="characters"
@@ -407,9 +463,12 @@ export default function AddCardModal({ visible, onClose }: Props) {
               <>
                 <Text style={styles.label}>Short Description</Text>
                 <TextInput
-                  style={styles.input}
+                  style={[styles.input, errors.description && styles.inputError]}
                   value={description}
-                  onChangeText={setDescription}
+                  onChangeText={(t) => {
+                    setDescription(t);
+                    if (errors.description) setErrors((prev) => ({ ...prev, description: false }));
+                  }}
                   placeholder="e.g., Library Card"
                   placeholderTextColor={colors.textMuted}
                   autoCapitalize="sentences"
@@ -438,8 +497,17 @@ export default function AddCardModal({ visible, onClose }: Props) {
               <PrimaryButton title="Cancel" onPress={handleClose} variant="ghost" />
             </View>
           </ScrollView>
-        </View>
+        </Pressable>
       </KeyboardAvoidingView>
+    </Pressable>
+      {toast && (
+        <Toast
+          title={toast.title}
+          message={toast.message}
+          type={toast.type}
+          onDismiss={() => setToast(null)}
+        />
+      )}
     </Modal>
   );
 }
@@ -449,6 +517,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  sheetContainer: {
+    width: '100%',
+    justifyContent: 'flex-end',
   },
   sheet: {
     backgroundColor: colors.background,
@@ -534,6 +606,10 @@ const styles = StyleSheet.create({
     color: colors.text,
     borderWidth: 1,
     borderColor: colors.border,
+  },
+  inputError: {
+    borderColor: colors.danger,
+    borderWidth: 1.5,
   },
   textArea: {
     minHeight: 100,

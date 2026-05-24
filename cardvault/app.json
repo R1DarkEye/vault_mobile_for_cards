@@ -12,7 +12,10 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "CardVault requires FaceID access to authenticate you securely and unlock your encrypted vault."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -26,6 +29,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9a91e8a4-4ef5-4f83-b729-ff8d74200ef0"
+      }
+    },
+    "plugins": [
+      "expo-font",
+      "expo-sharing"
+    ]
   }
 }
