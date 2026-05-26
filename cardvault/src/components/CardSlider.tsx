@@ -104,9 +104,9 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
               outputRange: [
                 0,
                 0,
-                -(CARD_WIDTH - 32),
-                -(CARD_WIDTH * 2 - 64),
-                -(CARD_WIDTH * 3 - 96),
+                -(CARD_WIDTH - 16),
+                -(CARD_WIDTH * 2 - 32),
+                -(CARD_WIDTH * 3 - 48),
               ],
               extrapolate: 'clamp',
             });

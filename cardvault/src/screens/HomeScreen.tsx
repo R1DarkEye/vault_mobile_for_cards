@@ -429,7 +429,7 @@ export default function HomeScreen() {
                       onPress={() => handleAction(item.label)}
                     >
                       <View style={[styles.cardActionIcon, { backgroundColor: item.bg }]}>
-                        <MaterialIcons name={item.icon as any} size={16} color={item.color} />
+                        <MaterialIcons name={item.icon as any} size={5} color={item.color} />
                       </View>
                       <Text style={styles.cardActionText}>{item.label}</Text>
                     </Pressable>
@@ -765,15 +765,16 @@ const styles = StyleSheet.create({
   cardActions: {
     flex: 1.0,
     gap: 8,
+    justifyContent: 'center',
   },
   cardActionItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 2,
     backgroundColor: 'rgba(134, 115, 115, 0.13)',
-    borderRadius: 14,
-    padding: 16,
-    paddingHorizontal: 10,
+    borderRadius: 8,
+    padding: 3,
+    paddingHorizontal: 2,
     borderWidth: 1,
     borderColor: colors.borderSoft,
   },
@@ -782,9 +783,9 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.97 }],
   },
   cardActionIcon: {
-    width: 26,
-    height: 26,
-    borderRadius: 9,
+    width: 15,
+    height: 15,
+    borderRadius: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
