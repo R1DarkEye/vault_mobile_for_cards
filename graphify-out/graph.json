@@ -1124,7 +1124,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "cardvault/src/components/CardSlider.tsx",
-      "source_location": "L183",
+      "source_location": "L195",
       "id": "components_cardslider_styles",
       "community": 5,
       "norm_label": "styles"
@@ -6595,5 +6595,5 @@
       "source_file": "cardvault/codebase.md"
     }
   ],
-  "built_at_commit": "1b077e48b2a869e40a9abb0a9f80903ebda083eb"
+  "built_at_commit": "cd141d44f2b4c2514804d5546e7500ce630d4971"
 }

@@ -6,9 +6,9 @@ import { VaultCard } from '../vault/types';
 import { colors } from '../theme/colors';
 
 const { width } = Dimensions.get('window');
-const AVAILABLE_WIDTH = width - 80; // screen padding(40) + glassy inner padding(24) + gap(16)
-const CARD_WIDTH = AVAILABLE_WIDTH * 0.6; // 60% for card stack area
-const CARD_HEIGHT = CARD_WIDTH * 0.63; // credit card aspect ratio
+const AVAILABLE_WIDTH = width - 40 - 32; // screen padding + panel padding + gap
+const CARD_WIDTH = AVAILABLE_WIDTH * 0.6; // flex 1.5 out of 2.5 is 60%
+const CARD_HEIGHT = CARD_WIDTH * 0.65 + 2; // ~1.54 aspect ratio, close to credit card
 
 const gradientMap: Record<string, [string, string]> = {
   payment: ['#0F245B', '#243C8B'],
@@ -67,6 +67,21 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
           decelerationRate="fast"
           style={{ overflow: 'visible' }}
           contentContainerStyle={{ overflow: 'visible' }}
+          removeClippedSubviews={false}
+          CellRendererComponent={({ children, index, style, ...props }) => {
+            const zIndex = cards.length - index;
+            return (
+              <View
+                style={[
+                  style,
+                  { overflow: 'visible', zIndex }
+                ]}
+                {...props}
+              >
+                {children}
+              </View>
+            );
+          }}
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX } } }],
             { useNativeDriver: true }
@@ -79,8 +94,8 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
             const distance = Animated.subtract(index, position);
 
             const scale = distance.interpolate({
-              inputRange: [-1, 0, 1, 2, 3],
-              outputRange: [1, 1, 0.95, 0.90, 0.85],
+              inputRange: [-1, 0, 1, 2],
+              outputRange: [1, 1, 0.92, 0.84],
               extrapolate: 'clamp',
             });
 
@@ -89,9 +104,9 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
               outputRange: [
                 0,
                 0,
-                -(CARD_WIDTH - 10),
-                -(CARD_WIDTH * 2 - 20),
-                -(CARD_WIDTH * 3 - 30),
+                -(CARD_WIDTH - 32),
+                -(CARD_WIDTH * 2 - 64),
+                -(CARD_WIDTH * 3 - 96),
               ],
               extrapolate: 'clamp',
             });
@@ -123,14 +138,11 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
                     style={styles.cardPrimary}
                   >
                     <View style={styles.cardHeader}>
-                      <View style={styles.cardChip}>
-                        <View style={styles.cardChipInner} />
-                      </View>
                       <Text style={styles.cardBrand}>
                         {item.type === 'payment' ? 'VISA' : item.type.toUpperCase()}
                       </Text>
                     </View>
-                    
+
                     <View style={styles.cardBody}>
                       <Text style={styles.cardNumber}>
                         •••• {item.last4 || '----'}
@@ -147,11 +159,11 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
                         </Text>
                       </View>
                       {item.type === 'payment' && (
-                        <MaterialIcons 
-                          name="wifi" 
-                          size={18} 
-                          color="rgba(255,255,255,0.8)" 
-                          style={styles.contactlessIcon} 
+                        <MaterialIcons
+                          name="wifi"
+                          size={18}
+                          color="rgba(255,255,255,0.8)"
+                          style={styles.contactlessIcon}
                         />
                       )}
                     </View>
@@ -202,16 +214,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   addCardIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 18,
+    height: 18,
+    borderRadius: 14,
     backgroundColor: colors.primarySoft,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 8,
+    marginBottom: 1,
   },
   addCardText: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: '600',
     color: colors.text,
   },
@@ -230,29 +242,12 @@ const styles = StyleSheet.create({
   },
   cardPrimary: {
     flex: 1,
-    borderRadius: 16,
-    padding: 16,
+    borderRadius: 14,
+    padding: 12,
     justifyContent: 'space-between',
   },
   cardHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  cardChip: {
-    width: 30,
-    height: 22,
-    borderRadius: 4,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cardChipInner: {
-    width: 20,
-    height: 14,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.35)',
+    alignItems: 'flex-end',
   },
   cardBrand: {
     color: '#FFFFFF',

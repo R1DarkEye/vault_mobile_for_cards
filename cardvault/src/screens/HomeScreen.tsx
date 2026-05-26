@@ -429,7 +429,7 @@ export default function HomeScreen() {
                       onPress={() => handleAction(item.label)}
                     >
                       <View style={[styles.cardActionIcon, { backgroundColor: item.bg }]}>
-                        <MaterialIcons name={item.icon as any} size={18} color={item.color} />
+                        <MaterialIcons name={item.icon as any} size={16} color={item.color} />
                       </View>
                       <Text style={styles.cardActionText}>{item.label}</Text>
                     </Pressable>
@@ -755,24 +755,25 @@ const styles = StyleSheet.create({
   },
   cardsPanel: {
     flexDirection: 'row',
-    gap: 16,
+    gap: 14,
   },
   cardStack: {
-    flex: 1.5,
+    flex: 2.0,
+    height: 150,
     overflow: 'visible',
   },
   cardActions: {
     flex: 1.0,
-    gap: 6,
+    gap: 8,
   },
   cardActionItem: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    backgroundColor: 'rgba(134, 115, 115, 0.08)',
+    gap: 6,
+    backgroundColor: 'rgba(134, 115, 115, 0.13)',
     borderRadius: 14,
-    paddingHorizontal: 12,
+    padding: 16,
+    paddingHorizontal: 10,
     borderWidth: 1,
     borderColor: colors.borderSoft,
   },
@@ -781,14 +782,14 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.97 }],
   },
   cardActionIcon: {
-    width: 30,
-    height: 30,
-    borderRadius: 10,
+    width: 26,
+    height: 26,
+    borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center',
   },
   cardActionText: {
-    fontSize: 12,
+    fontSize: 11,
     color: colors.text,
     fontWeight: '600',
     flexShrink: 1,
