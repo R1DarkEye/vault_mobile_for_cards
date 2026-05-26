@@ -6,9 +6,9 @@ import { VaultCard } from '../vault/types';
 import { colors } from '../theme/colors';
 
 const { width } = Dimensions.get('window');
-const AVAILABLE_WIDTH = width - 40 - 32 - 12; // screen padding + panel padding + gap
-const CARD_WIDTH = AVAILABLE_WIDTH * 0.6; // flex 1.5 out of 2.5 is 60%
-const CARD_HEIGHT = CARD_WIDTH * 0.65; // ~1.54 aspect ratio, close to credit card
+const AVAILABLE_WIDTH = width - 80; // screen padding(40) + glassy inner padding(24) + gap(16)
+const CARD_WIDTH = AVAILABLE_WIDTH * 0.6; // 60% for card stack area
+const CARD_HEIGHT = CARD_WIDTH * 0.63; // credit card aspect ratio
 
 const gradientMap: Record<string, [string, string]> = {
   payment: ['#0F245B', '#243C8B'],
@@ -79,8 +79,8 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
             const distance = Animated.subtract(index, position);
 
             const scale = distance.interpolate({
-              inputRange: [-1, 0, 1, 2],
-              outputRange: [1, 1, 0.92, 0.84],
+              inputRange: [-1, 0, 1, 2, 3],
+              outputRange: [1, 1, 0.95, 0.90, 0.85],
               extrapolate: 'clamp',
             });
 
@@ -89,9 +89,9 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
               outputRange: [
                 0,
                 0,
-                -(CARD_WIDTH - 32),
-                -(CARD_WIDTH * 2 - 64),
-                -(CARD_WIDTH * 3 - 96),
+                -(CARD_WIDTH - 10),
+                -(CARD_WIDTH * 2 - 20),
+                -(CARD_WIDTH * 3 - 30),
               ],
               extrapolate: 'clamp',
             });
@@ -123,6 +123,9 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
                     style={styles.cardPrimary}
                   >
                     <View style={styles.cardHeader}>
+                      <View style={styles.cardChip}>
+                        <View style={styles.cardChipInner} />
+                      </View>
                       <Text style={styles.cardBrand}>
                         {item.type === 'payment' ? 'VISA' : item.type.toUpperCase()}
                       </Text>
@@ -180,6 +183,7 @@ export default function CardSlider({ cards, onAddCard, onPressCard }: CardSlider
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    overflow: 'visible',
   },
   sliderContainer: {
     height: CARD_HEIGHT + 24,
@@ -231,7 +235,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   cardHeader: {
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  cardChip: {
+    width: 30,
+    height: 22,
+    borderRadius: 4,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cardChipInner: {
+    width: 20,
+    height: 14,
+    borderRadius: 2,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.35)',
   },
   cardBrand: {
     color: '#FFFFFF',

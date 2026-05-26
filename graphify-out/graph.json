@@ -1124,7 +1124,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "cardvault/src/components/CardSlider.tsx",
-      "source_location": "L180",
+      "source_location": "L183",
       "id": "components_cardslider_styles",
       "community": 5,
       "norm_label": "styles"
@@ -6205,9 +6205,9 @@
       "source_file": "cardvault/codebase.md",
       "source_location": "L182",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "cardvault_codebase_screen_implementations_src_screens",
-      "target": "cardvault_codebase_5_profilesetupscreen_tsx_file_e_projects_cards_vault_mobile_cardvault_src_screens_profilesetupscreen_tsx",
-      "confidence_score": 1.0
+      "target": "cardvault_codebase_5_profilesetupscreen_tsx_file_e_projects_cards_vault_mobile_cardvault_src_screens_profilesetupscreen_tsx"
     },
     {
       "relation": "contains",
@@ -6215,9 +6215,9 @@
       "source_file": "cardvault/codebase.md",
       "source_location": "L187",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "cardvault_codebase_screen_implementations_src_screens",
-      "target": "cardvault_codebase_6_unlockscreen_tsx_file_e_projects_cards_vault_mobile_cardvault_src_screens_unlockscreen_tsx",
-      "confidence_score": 1.0
+      "target": "cardvault_codebase_6_unlockscreen_tsx_file_e_projects_cards_vault_mobile_cardvault_src_screens_unlockscreen_tsx"
     },
     {
       "relation": "contains",
@@ -6265,9 +6265,9 @@
       "source_file": "cardvault/codebase.md",
       "source_location": "L218",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "cardvault_codebase_components_theme_src_components_src_theme",
-      "target": "cardvault_codebase_5_cardslider_tsx_file_e_projects_cards_vault_mobile_cardvault_src_components_cardslider_tsx",
-      "confidence_score": 1.0
+      "target": "cardvault_codebase_5_cardslider_tsx_file_e_projects_cards_vault_mobile_cardvault_src_components_cardslider_tsx"
     },
     {
       "relation": "contains",
@@ -6275,9 +6275,9 @@
       "source_file": "cardvault/codebase.md",
       "source_location": "L221",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "cardvault_codebase_components_theme_src_components_src_theme",
-      "target": "cardvault_codebase_6_toast_tsx_file_e_projects_cards_vault_mobile_cardvault_src_components_toast_tsx",
-      "confidence_score": 1.0
+      "target": "cardvault_codebase_6_toast_tsx_file_e_projects_cards_vault_mobile_cardvault_src_components_toast_tsx"
     },
     {
       "relation": "contains",
@@ -6285,9 +6285,9 @@
       "source_file": "cardvault/codebase.md",
       "source_location": "L227",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "cardvault_codebase_components_theme_src_components_src_theme",
-      "target": "cardvault_codebase_7_colors_ts_file_e_projects_cards_vault_mobile_cardvault_src_theme_colors_ts",
-      "confidence_score": 1.0
+      "target": "cardvault_codebase_7_colors_ts_file_e_projects_cards_vault_mobile_cardvault_src_theme_colors_ts"
     },
     {
       "relation": "contains",
@@ -6595,5 +6595,5 @@
       "source_file": "cardvault/codebase.md"
     }
   ],
-  "built_at_commit": "2125dad1700975b3fbf6b1007e5e889bd7fcc8d9"
+  "built_at_commit": "1b077e48b2a869e40a9abb0a9f80903ebda083eb"
 }

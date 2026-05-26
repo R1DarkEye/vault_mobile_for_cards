@@ -80,8 +80,8 @@
     "semantic_hash": "2e3a19f7d614ba16384383c3bffbbff1"
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\CardSlider.tsx": {
-    "mtime": 1779602010.130799,
-    "ast_hash": "dc9c5de4b4ae5b23dc291d8d299f1a20",
+    "mtime": 1779813139.430377,
+    "ast_hash": "7cacf4cef1297444941aa5d7c102d67e",
     "semantic_hash": ""
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\components\\EditProfileModal.tsx": {
@@ -115,8 +115,8 @@
     "semantic_hash": ""
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\HomeScreen.tsx": {
-    "mtime": 1779603151.0405407,
-    "ast_hash": "b45838c4d7fe575c725f7379ad8a8462",
+    "mtime": 1779813139.430377,
+    "ast_hash": "46addb8c913777a49638f187126173e6",
     "semantic_hash": ""
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\OnboardingScreen.tsx": {
@@ -140,13 +140,13 @@
     "semantic_hash": ""
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\screens\\UnlockScreen.tsx": {
-    "mtime": 1779603619.3880336,
-    "ast_hash": "7ee49654d3e4663ea07e2e9651a515ce",
+    "mtime": 1779604578.151631,
+    "ast_hash": "ce67a85229a0c87c0280bcffe0bee549",
     "semantic_hash": ""
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\theme\\colors.ts": {
-    "mtime": 1779604079.674722,
-    "ast_hash": "7eb347e77acdacaebb97dbd6de6d686e",
+    "mtime": 1779605890.1304903,
+    "ast_hash": "89b7fffba479c4f40fc1c236f9d6f34c",
     "semantic_hash": ""
   },
   "E:\\projects\\cards_vault_mobile\\cardvault\\src\\vault\\crypto.ts": {
